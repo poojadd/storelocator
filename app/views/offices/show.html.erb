@@ -1,0 +1,24 @@
+<div style="height: 400px; width:800px;  position: absolute;" class="map leaflet-container leaflet-fade-anim" id="map" tabindex="0">
+
+
+</div>
+<%= link_to "Back", offices_path  %>
+  <div>
+
+   <%= hidden_field_tag('lat',@office.latitude ) %>
+    <%= hidden_field_tag('lon',@office.longitude ) %>
+
+  </div>
+<script>
+
+    lat =document.getElementById("lat").value;
+    lon = document.getElementById("lon").value;
+    var map = L.map('map').setView([lat, lon], 13);
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    L.marker([lat, lon]).addTo(map)
+            .bindPopup('A pretty CSS3 popup. <br> Easily customizable.')
+            .openPopup();
+
+</script>

@@ -1,0 +1,30 @@
+<% if @offices.blank? %>
+    <p>There are not any Office recently in the system.</p>
+
+<% end %>
+
+<table >
+  <tr>
+
+    <th>Title</th>
+    <th>SHOW</th>
+
+  </tr>
+
+
+  <% @offices.each do |office| %>
+
+      <tr>
+
+        <td><%= office.name %> </td>
+
+        <td> <%= link_to 'Show', office  %></td>
+
+
+      </tr>
+  <% end %>
+</table>
+
+
+<h2>Add a new office</h2>
+<%= link_to 'New Office', '/offices/new' %>
